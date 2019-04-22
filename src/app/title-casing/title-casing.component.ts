@@ -5,12 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './title-casing.component.html',
   styleUrls: ['./title-casing.component.css']
 })
-export class TitleCasingComponent implements OnInit {
+export class TitleCasingComponent {
 
   movieTitle: string;
-  constructor() { }
-
-  ngOnInit() {
-  }
 
 }
