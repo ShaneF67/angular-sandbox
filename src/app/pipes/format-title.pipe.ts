@@ -7,20 +7,21 @@ export class FormatTitlePipe implements PipeTransform {
 
   transform(value: string, args?: any): string {
 
-    if (!value)
+    if (!value) {
       return null;
+    }
 
-    var formattedTitle = "";
-    var splitTitle = value.split(" ");
+    let formattedTitle = "";
+    let splitTitle = value.split(" ");
 
     for (var i = 0; i < splitTitle.length; i++) {
 
-      var word = splitTitle[i].toLowerCase();
-      var wordsToIgnore = ["in", "the", "of", "off", "and", "a"];
+      let word = splitTitle[i].toLowerCase();
+      let wordsToIgnore = ["in", "the", "of", "off", "and", "a"];
 
       if (i == 0 || !wordsToIgnore.includes(word)) {
-        var firstChar = word.substring(0, 1);
-        var restOfWord = word.substring(1, word.length);
+        let firstChar = word.substring(0, 1);
+        let restOfWord = word.substring(1, word.length);
 
         word = firstChar.toUpperCase() + restOfWord;
       }
