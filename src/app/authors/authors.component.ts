@@ -7,7 +7,7 @@ import { ArrayType } from '@angular/compiler';
   templateUrl: './authors.component.html',
   styleUrls: ['./authors.component.css']
 })
-export class AuthorsComponent implements OnInit {
+export class AuthorsComponent {
 
   authors;
   countOfAuthors: number;
@@ -17,8 +17,5 @@ export class AuthorsComponent implements OnInit {
     this.authors = service.getAuthors();
     this.countOfAuthors = this.authors.length;
    }
-
-  ngOnInit() {
-  }
 
 }

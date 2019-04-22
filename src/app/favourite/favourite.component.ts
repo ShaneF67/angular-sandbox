@@ -5,14 +5,9 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './favourite.component.html',
   styleUrls: ['./favourite.component.css']
 })
-export class FavouriteComponent implements OnInit {
+export class FavouriteComponent {
 
   @Input() starFilled: boolean;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 
   clickStar() {
     this.starFilled = !this.starFilled;
