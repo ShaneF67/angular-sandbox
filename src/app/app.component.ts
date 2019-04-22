@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = "Shane's Angular Sandbox";
+
+  tweet = {
+    body: "Body of tweet....",
+    isLiked: false,
+    likesCount: 10
+  }
 }
