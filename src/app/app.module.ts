@@ -1,4 +1,4 @@
-import { AuthorsService } from './authors.service';
+import { AuthorsService } from './services/authors.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
