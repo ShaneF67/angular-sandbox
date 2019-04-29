@@ -11,6 +11,7 @@ import { FormatTitlePipe } from './pipes/format-title.pipe';
 import { LikeComponent } from './like/like.component';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { NewCourseComponent } from './new-course/new-course.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     FormatTitlePipe,
     LikeComponent,
     ZippyComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    NewCourseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,66 @@
+<h2>Sample Component for Adding New Courses</h2>
+<form #f="ngForm" (ngSubmit)="formSubmitted(f)">
+  <div class="form-group">
+      <label for="courseName">
+      Course Name:
+    </label>
+    <input
+      required
+      minlength="5"
+      ngModel
+      name="courseName" 
+      #courseName="ngModel" 
+      type="text" 
+      id="courseName"
+      class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="!courseName.valid && courseName.touched">
+        <div *ngIf="courseName.errors.required">Course name is required</div>
+        <div *ngIf="courseName.errors.minlength">Course name must be longer than {{ courseName.errors.minlength.requiredLength }} characters</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+    <label for="courseSelection">Select Course Category:</label>
+    <select
+      ngModel
+      required 
+      #courseSelection="ngModel"
+      id="courseSelection" 
+      name="courseSelection" 
+      class="form-control">
+      <option 
+        *ngFor="let course of courseSelections" 
+        [value]="course.id">{{ course.name }}</option>
+    </select>
+    <div
+      *ngIf="courseSelection.touched 
+      && courseSelection.errors != null
+      && courseSelection.errors.required"
+      class="alert alert-danger">
+        A course category is required
+    </div>
+  </div>
+
+  <div class="form-check">
+      <input 
+        ngModel
+        name="moneyBack"
+        #moneyBack="ngModel"
+        [checked]="moneyBackGuarantee"
+        id="moneyBack" 
+        class="form-check-input" 
+        type="checkbox" />
+      <label 
+        for="moneyBack" 
+        class="form-check-label">
+        30 Day Money Back Guarantee
+      </label>
+  </div>
+  <button [disabled]="f.untouched || !f.valid" 
+    class="btn btn-primary submit-btn" 
+    type="submit">Submit</button>
+</form>
+<p>
+  {{ f.value | json}}
+</p>
