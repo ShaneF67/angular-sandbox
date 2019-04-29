@@ -10,6 +10,7 @@ import { TitleCasingComponent } from './title-casing/title-casing.component';
 import { FormatTitlePipe } from './pipes/format-title.pipe';
 import { LikeComponent } from './like/like.component';
 import { ZippyComponent } from './zippy/zippy.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ZippyComponent } from './zippy/zippy.component';
     TitleCasingComponent,
     FormatTitlePipe,
     LikeComponent,
-    ZippyComponent
+    ZippyComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
