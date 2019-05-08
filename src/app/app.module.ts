@@ -1,4 +1,6 @@
+import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { HttpClientModule } from '@angular/common/http';
 import { AuthorsService } from './services/authors.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +16,7 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { PostsComponentComponent } from './posts-component/posts-component.component';
 
 @NgModule({
   declarations: [
@@ -27,15 +30,18 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ZippyComponent,
     ContactFormComponent,
     NewCourseComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    PostsComponentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
-    AuthorsService
+    AuthorsService,
+    PostService
   ],
   bootstrap: [AppComponent]
 })
