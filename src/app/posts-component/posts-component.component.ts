@@ -1,8 +1,10 @@
+import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
+import { NotFoundError } from '../common/not-found-error';
 
 @Component({
-  selector: 'app-posts-component',
+  selector: 'posts-component',
   templateUrl: './posts-component.component.html',
   styleUrls: ['./posts-component.component.css']
 })
@@ -16,7 +18,7 @@ export class PostsComponentComponent implements OnInit {
   ngOnInit() {
     this.service.getPosts()
     .subscribe((response: Response) => {
-      this.posts = response.json();
+      this.posts = response;
       },
         error => {
           console.log(error);
@@ -28,9 +30,9 @@ export class PostsComponentComponent implements OnInit {
       .subscribe((response: Response) => {
         console.log(response);
       },
-      (error: Response) => {
+      (error: AppError) => {
 
-        if (error.status === 400) {
+        if (error instanceof NotFoundError) {
           alert("Sorry an error has occurred");
         } else {
           alert("An unexpected error occurred");
@@ -56,9 +58,9 @@ export class PostsComponentComponent implements OnInit {
         this.posts.splice(index, 1);
         console.log(response);
       },
-        (error: Response) => {
+        (error: AppError) => {
 
-          if (error.status === 404) {
+          if (error instanceof NotFoundError) {
             alert("This post has already been deleted");
           } else {
             alert("An unexpected error occurred");
