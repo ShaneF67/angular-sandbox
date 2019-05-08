@@ -1,9 +1,10 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorsService } from './services/authors.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -41,7 +42,8 @@ import { PostsComponentComponent } from './posts-component/posts-component.compo
   ],
   providers: [
     AuthorsService,
-    PostService
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
