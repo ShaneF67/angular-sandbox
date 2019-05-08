@@ -9,54 +9,54 @@ import { NotFoundError } from '../common/not-found-error';
   templateUrl: './posts-component.component.html',
   styleUrls: ['./posts-component.component.css']
 })
-export class PostsComponentComponent implements OnInit {
+export class PostsComponent implements OnInit {
+  posts;
 
-
-  private posts;
-
-  constructor(private service: PostService) { }
+  constructor(private service: PostService) {
+  }
 
   ngOnInit() {
     this.service.getAll()
-    .subscribe(posts => this.posts = posts);
+      .subscribe(posts => this.posts = posts);
   }
 
   createPost(input: HTMLInputElement) {
     let post = { title: input.value };
-    this.posts.splice(0, 0, post);
-
-    input.value = "";
+    input.value = '';
 
     this.service.create(post)
-      .subscribe(newPost => {
-        post['id'] = newPost.id;
-      },
-      (error: AppError) => {
-        this.posts.splice(0, 1);
-
-        if (error instanceof BadInput) {
-          alert("Sorry an error has occurred");
-        } else throw error;
-      });
+      .subscribe(
+        newPost => {
+          post['id'] = newPost.id;
+            this.posts.splice(0, 0, post);
+          },
+          (error: AppError) => {
+            if (error instanceof BadInput) {
+              // this.form.setErrors(error.originalError);
+            }
+            else throw error;
+          });
   }
 
-  updatePost(input: HTMLElement) {
-    this.service.update(input)
-      .subscribe(updateResult => console.log(updateResult));
-  }
-
-  deletePost(input: HTMLElement) {
-    this.service.delete(input.id)
-      .subscribe(() => {
-        let index = this.posts.indexOf(input);
-        this.posts.splice(index, 1);
-      },
-        (error: AppError) => {
-
-          if (error instanceof NotFoundError) {
-            alert("This post has already been deleted");
-          } else throw error;
+  updatePost(post) {
+    this.service.update(post)
+      .subscribe(
+        updatedPost => {
+          console.log(updatedPost);
         });
   }
 
+  deletePost(post) {
+    this.service.delete(post.id)
+      .subscribe(
+        () => {
+          let index = this.posts.indexOf(post);
+          this.posts.splice(index, 1);
+        },
+        (error: AppError) => {
+          if (error instanceof NotFoundError)
+            alert('This post has already been deleted.');
+          else throw error;
+        });
+  }
 }

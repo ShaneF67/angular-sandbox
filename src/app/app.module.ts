@@ -1,3 +1,4 @@
+import { GithubService } from './services/github.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
@@ -17,7 +18,8 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseComponent } from './new-course/new-course.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
-import { PostsComponentComponent } from './posts-component/posts-component.component';
+import { PostsComponent } from './posts-component/posts-component.component';
+import { GithubUsersComponent } from './github-users/github-users.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { PostsComponentComponent } from './posts-component/posts-component.compo
     ContactFormComponent,
     NewCourseComponent,
     ChangePasswordComponent,
-    PostsComponentComponent
+    PostsComponent,
+    GithubUsersComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { PostsComponentComponent } from './posts-component/posts-component.compo
   providers: [
     AuthorsService,
     PostService,
+    GithubService,
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
