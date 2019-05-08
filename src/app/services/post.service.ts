@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { AppError } from './../common/app-error';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -25,8 +26,8 @@ export class PostService {
     return this.http.post(this.url, post)
     .pipe(
       catchError((error: Response) => {
-        if (error.status === 404) {
-          return Observable.throw(new NotFoundError())
+        if (error.status === 400) {
+          return Observable.throw(new BadInput(error))
         } else {
           return Observable.throw(new AppError(error));
         }

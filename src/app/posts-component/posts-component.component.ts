@@ -1,3 +1,4 @@
+import { BadInput } from './../common/bad-input';
 import { AppError } from './../common/app-error';
 import { PostService } from './../services/post.service';
 import { Component, OnInit } from '@angular/core';
@@ -32,7 +33,7 @@ export class PostsComponentComponent implements OnInit {
       },
       (error: AppError) => {
 
-        if (error instanceof NotFoundError) {
+        if (error instanceof BadInput) {
           alert("Sorry an error has occurred");
         } else {
           alert("An unexpected error occurred");
