@@ -1,7 +1,9 @@
 <div class="media" *ngFor="let user of users">
   <img class="user-photo" [src]="user.avatar_url" alt="User Image">
   <div class="media-body">
-    <h5 class="mt-0">{{ user.login }}</h5>
+    <h5 class="mt-0">
+      <a [routerLink]="['/followers', user.id]">{{ user.login }}</a>
+    </h5>
       {{ user.html_url }}
   </div>
 </div>

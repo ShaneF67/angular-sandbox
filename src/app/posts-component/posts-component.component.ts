@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
     this.service.create(post)
       .subscribe(
         newPost => {
-          post['id'] = newPost.id;
+          //post['id'] = newPost.id;
             this.posts.splice(0, 0, post);
           },
           (error: AppError) => {

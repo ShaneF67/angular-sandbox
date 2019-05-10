@@ -4,6 +4,7 @@ import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthorsService } from './services/authors.service';
+import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,7 +23,7 @@ import { PostsComponent } from './posts-component/posts-component.component';
 import { GithubUsersComponent } from './github-users/github-users.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { GithubProfileComponentComponent } from './github-profile-component/github-profile-component.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component'
 import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
@@ -42,14 +43,32 @@ import { NotFoundComponent } from './not-found/not-found.component';
     GithubUsersComponent,
     NavbarComponent,
     HomeComponent,
-    GithubProfileComponentComponent,
+    GithubProfileComponent,
     NotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path: '',
+        component: HomeComponent
+      }, 
+      {
+        path: 'followers/:username',
+        component: GithubProfileComponent
+      },
+      {
+        path: 'followers',
+        component: GithubUsersComponent
+      },
+      {
+        path: '**', //Wildcard - Catches any URL in the address bar
+        component: NotFoundComponent
+      }
+    ])
   ],
   providers: [
     AuthorsService,
