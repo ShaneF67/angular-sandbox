@@ -20,6 +20,10 @@ import { NewCourseComponent } from './new-course/new-course.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { PostsComponent } from './posts-component/posts-component.component';
 import { GithubUsersComponent } from './github-users/github-users.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponentComponent } from './github-profile-component/github-profile-component.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,11 @@ import { GithubUsersComponent } from './github-users/github-users.component';
     NewCourseComponent,
     ChangePasswordComponent,
     PostsComponent,
-    GithubUsersComponent
+    GithubUsersComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponentComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
