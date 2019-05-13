@@ -3,14 +3,12 @@ import { AppErrorHandler } from './common/app-error-handler';
 import { PostService } from './services/post.service';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthorsService } from './services/authors.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AuthorsComponent } from './authors/authors.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { TitleCasingComponent } from './title-casing/title-casing.component';
 import { FormatTitlePipe } from './pipes/format-title.pipe';
@@ -30,7 +28,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
   declarations: [
     AppComponent,
     SignupFormComponent,
-    AuthorsComponent,
     FavouriteComponent,
     TitleCasingComponent,
     FormatTitlePipe,
@@ -65,13 +62,36 @@ import { NotFoundComponent } from './not-found/not-found.component';
         component: GithubUsersComponent
       },
       {
+        path: 'favourite',
+        component: FavouriteComponent
+      },
+      {
+        path: 'titleCasing',
+        component: TitleCasingComponent
+      },
+      {
+        path: 'posts',
+        component: PostsComponent
+      },
+      {
+        path: 'contact',
+        component: ContactFormComponent
+      },
+      {
+        path: 'reactiveForm',
+        component: SignupFormComponent
+      },
+      {
+        path: 'asyncForm',
+        component: ChangePasswordComponent
+      },
+      {
         path: '**', //Wildcard - Catches any URL in the address bar
         component: NotFoundComponent
       }
     ])
   ],
   providers: [
-    AuthorsService,
     PostService,
     GithubService,
     { provide: ErrorHandler, useClass: AppErrorHandler }

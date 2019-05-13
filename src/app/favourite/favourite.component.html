@@ -2,3 +2,5 @@
 <div class="star-container">
   <i class="fa-star fave-star" [class.far]="!starFilled" [class.fas]="starFilled" (click)="clickStar()"></i>
 </div>
+
+<like [likesCount]="tweet.likesCount" [isLiked]="tweet.isLiked"></like>

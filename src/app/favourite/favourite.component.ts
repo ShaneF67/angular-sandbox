@@ -13,4 +13,10 @@ export class FavouriteComponent {
     this.starFilled = !this.starFilled;
   }
 
+  tweet = {
+    body: "Body of tweet....",
+    isLiked: false,
+    likesCount: 10
+  }
+
 }
